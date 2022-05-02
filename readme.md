@@ -46,6 +46,8 @@ For `MONGO_USER` and `MONGO_PWD` you have to create an account in mongo atlas in
 
 ## Important For mongoDB
 
+Remember that connection to db is actually mine, you have to change this conection in `src/commands/utils.py`
+
 Actually mongo database (`marvel`) and collection (`users`) is hardcoded in `src/commands/utils.py` file, you can change these values but have to be named with the same name in mongodb.
 
 
