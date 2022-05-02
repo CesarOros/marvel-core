@@ -25,7 +25,10 @@ For `MONGO_USER` and `MONGO_PWD` you have to create an account in mongo atlas in
 Actually mongo database (`marvel`) and collection (`users`) is hardcoded in `src/commands/utils.py` file, you can change these values but have to be named with the same name in mongodb.
 
 
-
-py -m pip install --user virtualenv
-virtualenv -p python3 venv
-venv\Scripts\activate
+## For create venv
+Install venv:
+`py -m pip install --user virtualenv`
+Create venv:
+`virtualenv -p python3 venv`
+Active venv:
+`venv\Scripts\activate`
