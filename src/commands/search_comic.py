@@ -1,8 +1,14 @@
+from exceptions.exceptions import ComicNotFound
+from constants import CHARACTERS, COMICS
+from dotenv import load_dotenv
+from datetime import datetime
 import requests
 import json
-from datetime import datetime
+import os
 
-from search_comics.constants import CHARACTERS
+load_dotenv()
+URL = os.getenv("URL")
+AUTHENTICATION_HEADER = os.getenv("AUTHENTICATION_HEADER")
 
 
 def get_character_comic(endpoint, type_parse):
@@ -43,3 +49,26 @@ def get_comic_date(dates) -> str:
             date_parsed = datetime.strptime(date.get("date"), "%Y-%m-%dT%H:%M:%S-%f")
             return date_parsed.strftime("%Y-%m-%d %H:%M:%S")
     return ""
+
+
+def get_comic_by_id(comic_id):
+    comic_request = requests.get(f"{URL}/{COMICS}/{comic_id}{AUTHENTICATION_HEADER}")
+    comic_response = json.loads(comic_request.content)
+    comic = comic_response.get("data")["results"]
+    if comic_request.status_code != 200 or not len(comic):
+        raise ComicNotFound
+
+    return comic[0]
+
+
+def get_comics_data(data):
+    comics = []
+    for comic_id in data.get("comics", []):
+        try:
+            comic = get_comic_by_id(comic_id)
+            comics.append(
+                {"title": comic["title"], "date": get_comic_date(comic["dates"])}
+            )
+        except:
+            pass
+    return comics
