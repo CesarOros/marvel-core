@@ -1,5 +1,3 @@
-
-
 responses:
   200:
     description: Add comic to user register

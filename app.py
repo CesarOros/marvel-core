@@ -160,7 +160,11 @@ def get_layaway_list():
                     )
                 )
             if alph_order:
-                comics = sorted(comics, key=lambda item: item["title"])
+                comics = sorted(
+                    comics,
+                    key=lambda item: item["title"],
+                    reverse=True if alph_order == "desc" else False,
+                )
         return {"comics": comics}
 
     except:

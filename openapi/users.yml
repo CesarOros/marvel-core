@@ -1,5 +1,3 @@
-
-
 responses:
   200:
     description: Control User
