@@ -7,7 +7,7 @@ Create venv:
 `py -m pip install --user virtualenv` - windows
 `python -m pip install --user virtualenv` - linux
 - create venv:
-`virtualenv -p python3 venv`
+`py -m venv venv`
 - active venv:
 `venv\Scripts\activate` - windows
 `source venv\Scripts\activate` - linux
