@@ -50,6 +50,7 @@ def insert_user(name, password, age):
         }
         user_inserted = user_collection.insert_one(user_obj)
         del user_obj["_id"]
+        del user_obj["password"]
         response = {"id": str(user_inserted.inserted_id), **user_obj}
     except UserAlreadyExists:
         response = {"error": "El usuario ya existe"}
