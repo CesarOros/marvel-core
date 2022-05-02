@@ -1,15 +1,16 @@
-from constants import SEARCH_TYPE_KEY, CHARACTERS, COMICS
-from exceptions.exceptions import ComicNotFound
-from commands.utils import has_word
+from src.constants import SEARCH_TYPE_KEY, CHARACTERS, COMICS
+from src.exceptions.exceptions import ComicNotFound
+from src.commands.utils import has_word
 from flask import Flask, request
+from flasgger import swag_from, Swagger
 from dotenv import load_dotenv
-from commands.users import (
+from src.commands.users import (
     get_user_comics,
     get_user_information,
     insert_user_comic,
     insert_user,
 )
-from commands.search_comic import (
+from src.commands.search_comic import (
     get_character_comic,
     get_comic_by_id,
     get_comics_data,
@@ -26,9 +27,11 @@ PORT = 3200
 HOST = "0.0.0.0"
 
 app = Flask(__name__)
+swagger = Swagger(app)
 
 
 @app.route("/searchComics/", methods=["GET"])
+@swag_from("./openapi/search_comics.yml")
 def search_comics_or_characters():
     args = request.args
     criteria = args.get("criteria")
@@ -65,6 +68,7 @@ def search_comics_or_characters():
 
 
 @app.route("/users/", methods=["GET", "POST"])
+@swag_from("./openapi/users.yml")
 def get_or_generate_user():
     data = request.get_json(force=True)
     name = data.get("name")
@@ -74,12 +78,14 @@ def get_or_generate_user():
         return {"error": "Las keys name y password deberian estar en el cuerpo"}
     if request.method == "GET":
         response = get_user_information(name, password)
+        print("-----")
     if request.method == "POST":
         response = insert_user(name, password, age)
     return response
 
 
 @app.route("/addToLayaway/", methods=["POST"])
+@swag_from("./openapi/add_layaway.yml")
 def add_to_layaway():
     data = request.get_json(force=True)
     name = data.get("name")
@@ -118,7 +124,8 @@ def add_to_layaway():
     return response
 
 
-@app.route("/getLayawayList", methods=["GET"])
+@app.route("/getLayawayList/", methods=["GET"])
+@swag_from("./openapi/get_layaway.yml")
 def get_layaway_list():
     data = request.get_json(force=True)
     args = request.args

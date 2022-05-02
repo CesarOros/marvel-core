@@ -1,0 +1,31 @@
+
+
+responses:
+  200:
+    description: Add comic to user register
+    schema:
+      $ref: '#/definitions/Layaway'
+parameters:
+  - name: body
+    in: body
+    type: object
+    properties:
+      name: 
+        type: string
+        required: true
+      password:
+        type: string
+        required: true
+      comic_id:
+        type: string
+        required: true
+definitions:          
+  Layaway:
+    type: object
+    properties:
+      name: 
+        type: string
+      comicTitle:
+        type: string
+      message: 
+        type: string

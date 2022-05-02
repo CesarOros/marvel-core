@@ -1,0 +1,32 @@
+
+
+responses:
+  200:
+    description: Control User
+    schema:
+      $ref: '#/definitions/User'
+parameters:
+  - name: name
+    in: body
+    type: object
+    properties:
+      name: 
+        type: string
+        required: true
+      password:
+        type: string
+        required: true
+      age:
+        type: string
+definitions:          
+  User:
+    type: object
+    properties:
+      name: 
+        type: string
+      id:
+        type: string
+      age: 
+        type: string
+      token:
+        type: string

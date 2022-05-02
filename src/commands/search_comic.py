@@ -1,5 +1,5 @@
-from exceptions.exceptions import ComicNotFound
-from constants import CHARACTERS, COMICS
+from src.exceptions.exceptions import ComicNotFound
+from src.constants import CHARACTERS, COMICS
 from dotenv import load_dotenv
 from datetime import datetime
 import requests

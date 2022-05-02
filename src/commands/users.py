@@ -1,5 +1,5 @@
-from exceptions.exceptions import IncorrectUserPassword
-from exceptions.exceptions import UserAlreadyExists
+from src.exceptions.exceptions import IncorrectUserPassword
+from src.exceptions.exceptions import UserAlreadyExists
 import pymongo
 import uuid
 

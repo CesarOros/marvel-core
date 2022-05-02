@@ -1,0 +1,49 @@
+
+
+responses:
+  200:
+    description: Users comics
+    schema:
+      $ref: '#/definitions/SearchComics'
+parameters:
+  - name: name_comic
+    in: query
+    type: string
+  - name: alph_order
+    in: query
+    type: string
+  - name: body
+    in: body
+    type: object
+    properties:
+      name: 
+        type: string
+        required: true
+      password:
+        type: string
+        required: true
+      comic_id:
+        type: string
+        required: true
+  
+  
+
+definitions:
+  SearchComics:
+    type: object
+    properties:
+      comics:
+          type: array
+          items:
+            $ref: '#/definitions/Comics'
+  Comics:
+    type: object
+    properties:
+      id: 
+        type: string
+      title:
+        type: string
+      image: 
+        type: string
+      onSaleDate:
+        type: date

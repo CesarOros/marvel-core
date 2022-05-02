@@ -1,0 +1,48 @@
+
+
+responses:
+  200:
+    description: Characters and Comics
+    schema:
+      $ref: '#/definitions/SearchComics'
+parameters:
+  - name: criteria
+    in: query
+    type: string
+  - name: name_title
+    in: query
+    type: string
+definitions:
+  SearchComics:
+    type: object
+    properties:
+      characters:
+        type: array
+        items:
+          $ref: '#/definitions/Characters'
+      comics:
+          type: array
+          items:
+            $ref: '#/definitions/Comics'
+  Characters:
+    type: object
+    properties:
+      id: 
+        type: string
+      name:
+        type: string
+      image: 
+        type: string
+      appearances:
+        type: string
+  Comics:
+    type: object
+    properties:
+      id: 
+        type: string
+      title:
+        type: string
+      image: 
+        type: string
+      onSaleDate:
+        type: date
