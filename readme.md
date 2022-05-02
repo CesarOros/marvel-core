@@ -16,7 +16,7 @@ and 3200(application port) port can be changed in app.py file
 
 It's necesary create `.env` document and paste the data from `.env.dev`. Remember that you have to fill variables with your data.
 
-You can generate your `API_KEY`, `API_KEY` and `API_HASH` creating an marvel developer account in the follow link: (https://developer.marvel.com/)
+You can generate your `API_KEY` and `API_HASH` creating an marvel developer account in the follow link: (https://developer.marvel.com/)
 
 For `MONGO_USER` and `MONGO_PWD` you have to create an account in mongo atlas in the follow link: (https://account.mongodb.com/account/login)
 
