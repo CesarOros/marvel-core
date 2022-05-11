@@ -1,16 +1,8 @@
+from src.commands.utils import connect_db
 from src.exceptions.exceptions import IncorrectUserPassword
 from src.exceptions.exceptions import UserAlreadyExists
 import pymongo
 import uuid
-
-
-def connect_db():
-    client = pymongo.MongoClient(
-        "mongodb+srv://cesaroros:TUP8QaGCmWiTme3@marvel.fjb8b.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
-        uuidRepresentation="standard",
-    )
-    db = client["marveldb"]
-    return db["users"]
 
 
 def get_user(name, password):
